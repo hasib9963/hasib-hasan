@@ -1593,28 +1593,18 @@ footer {
 }
 
 /* ===== Social Icons with Tooltips ===== */
-.example-1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem; /* spacing between icons */
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
-.example-1 .icon-content {
+.parent-relative {
   position: relative;
 }
 
-/* Tooltip bubble */
-.example-1 .icon-content .tooltip {
+.tooltip-icon {
   position: absolute;
-  top: -40px; /* adjust vertical position */
+  top: -42px;
   left: 50%;
   transform: translateX(-50%);
   background: #fff;
-  color: #0f172a; /* dark text for light tooltip */
+  color: #0f172a;
   padding: 4px 10px;
   border-radius: 6px;
   font-size: 0.75rem;
@@ -1625,15 +1615,36 @@ footer {
   transition: all 0.25s ease;
   pointer-events: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 20;
 }
 
-.example-1 .icon-content:hover .tooltip {
+.parent-relative:hover .tooltip-icon {
   opacity: 1;
   visibility: visible;
-  top: -50px;
+  top: -52px;
 }
 
-/* Link circle — keeping the glass style */
+.dark .tooltip-icon {
+  background: #1e293b;
+  color: #f1f5f9;
+}
+
+/* Social list reset */
+.example-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.example-1 .icon-content {
+  position: relative;
+}
+
+/* Social link circle styling */
 .example-1 .icon-content .link {
   display: flex;
   justify-content: center;
@@ -1641,7 +1652,7 @@ footer {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  color: var(--text-secondary); /* adapts to light/dark */
+  color: var(--text-secondary);
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   backdrop-filter: blur(8px);
@@ -1653,23 +1664,23 @@ footer {
   transition: color 0.3s;
 }
 
-/* Hover colours for each platform */
-.example-1 .icon-content .link[data-social="github"]:hover {
-  color: #333; /* GitHub dark */
+/* Hover colours per platform */
+.example-1 .link[data-social="github"]:hover {
+  color: #333;
   border-color: #333;
   box-shadow: 0 0 12px rgba(51, 51, 51, 0.3);
 }
-.example-1 .icon-content .link[data-social="linkedin"]:hover {
+.example-1 .link[data-social="linkedin"]:hover {
   color: #0a66c2;
   border-color: #0a66c2;
   box-shadow: 0 0 12px rgba(10, 102, 194, 0.3);
 }
-.example-1 .icon-content .link[data-social="discord"]:hover {
+.example-1 .link[data-social="discord"]:hover {
   color: #5865f2;
   border-color: #5865f2;
   box-shadow: 0 0 12px rgba(88, 101, 242, 0.3);
 }
-.example-1 .icon-content .link[data-social="facebook"]:hover {
+.example-1 .link[data-social="facebook"]:hover {
   color: #1877f2;
   border-color: #1877f2;
   box-shadow: 0 0 12px rgba(24, 119, 242, 0.3);

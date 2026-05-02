@@ -229,12 +229,7 @@ const addresses = [
     icon: "fa-link",
     title: "Social Network",
     value: "",
-    html: socialIcons
-      .map(
-        (s) =>
-          `<a href="${s.url}" target="_blank" class="social-btn" style="margin-right:0.3rem"><i class="fa-brands ${s.icon}"></i></a>`,
-      )
-      .join(""),
+    html: `<div id="addressSocialContainer"></div>`, // container to be filled
   },
 ];
 
@@ -290,7 +285,6 @@ function renderSocial(targetId) {
   const el = $(targetId);
   if (!el) return;
 
-  // Map social platform to a data-social value and tooltip text
   const platformMap = {
     "fa-github": { social: "github", tooltip: "GitHub" },
     "fa-linkedin-in": { social: "linkedin", tooltip: "LinkedIn" },
@@ -312,11 +306,11 @@ function renderSocial(targetId) {
         target="_blank"
         aria-label="${info.tooltip}"
         data-social="${info.social}"
-        class="link"
+        class="link parent-relative"
       >
         <i class="fa-brands ${s.icon}"></i>
+        <span class="tooltip-icon">${info.tooltip}</span>
       </a>
-      <div class="tooltip">${info.tooltip}</div>
     `;
     list.appendChild(li);
   });
@@ -482,9 +476,12 @@ function renderProjects() {
             ${p.links
               .map(
                 (link) => `
-              <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="${link.label}">
-                <i class="${link.icon}"></i>
-              </a>`,
+              <div class="parent-relative">
+                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="${link.label}">
+                  <i class="${link.icon}"></i>
+                </a>
+                <span class="tooltip-icon">${link.label}</span>
+              </div>`,
               )
               .join("")}
           </div>
@@ -513,6 +510,8 @@ function renderAddresses() {
         </article>`;
     })
     .join("");
+  // Now fill the social container
+  renderSocial("#addressSocialContainer");
 }
 
 /* ===== Theme ===== */
