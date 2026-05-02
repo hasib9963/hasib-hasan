@@ -289,12 +289,40 @@ function renderSummary() {
 function renderSocial(targetId) {
   const el = $(targetId);
   if (!el) return;
-  el.innerHTML = socialIcons
-    .map(
-      (s) =>
-        `<a href="${s.url}" target="_blank" class="social-btn"><i class="fa-brands ${s.icon}"></i></a>`,
-    )
-    .join("");
+
+  // Map social platform to a data-social value and tooltip text
+  const platformMap = {
+    "fa-github": { social: "github", tooltip: "GitHub" },
+    "fa-linkedin-in": { social: "linkedin", tooltip: "LinkedIn" },
+    "fa-discord": { social: "discord", tooltip: "Discord" },
+    "fa-facebook": { social: "facebook", tooltip: "Facebook" },
+  };
+
+  const list = document.createElement("ul");
+  list.className = "example-1";
+
+  socialIcons.forEach((s) => {
+    const info = platformMap[s.icon] || { social: "", tooltip: s.icon };
+    const li = document.createElement("li");
+    li.className = "icon-content";
+
+    li.innerHTML = `
+      <a
+        href="${s.url}"
+        target="_blank"
+        aria-label="${info.tooltip}"
+        data-social="${info.social}"
+        class="link"
+      >
+        <i class="fa-brands ${s.icon}"></i>
+      </a>
+      <div class="tooltip">${info.tooltip}</div>
+    `;
+    list.appendChild(li);
+  });
+
+  el.innerHTML = "";
+  el.appendChild(list);
 }
 
 /* ===== Render About Points ===== */
