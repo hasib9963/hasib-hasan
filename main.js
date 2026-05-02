@@ -490,11 +490,8 @@ function renderAddresses() {
 /* ===== Theme ===== */
 function applyTheme(isDark) {
   document.documentElement.classList.toggle("dark", isDark);
-  const icon = $("#themeIcon");
-  if (icon)
-    icon.className = isDark
-      ? "fa-solid fa-sun text-xl"
-      : "fa-solid fa-moon text-xl";
+  const toggleCheckbox = $("#themeToggle");
+  if (toggleCheckbox) toggleCheckbox.checked = isDark;
   const mobileBtn = $("#themeToggleMobile");
   if (mobileBtn) {
     mobileBtn.innerHTML = isDark
