@@ -759,8 +759,6 @@ function initScrollParallax() {
 /* ===== Navigation & Events ===== */
 function setupEvents() {
   const navbar = $("#navbar");
-  const mobileBtn = $("#mobileMenuBtn");
-  const mobileMenu = $("#mobileMenu");
   const navLinks = $$(".nav-link");
   const sectionIds = ["hero", "about", "skills", "projects", "contact"];
   const sections = sectionIds
@@ -781,11 +779,11 @@ function setupEvents() {
     activateNavForHash(current);
   };
 
-  mobileBtn?.addEventListener("click", () =>
-    mobileMenu.classList.toggle("hidden"),
-  );
-  document.querySelectorAll('a[href^="#"]').forEach((a) => {
-    a.addEventListener("click", () => mobileMenu?.classList.add("hidden"));
+  $("#mobileMenu").addEventListener("click", (e) => {
+    if (e.target.closest("a[href^='#']") || e.target.closest(".btn-primary")) {
+      const checkbox = $("#mobileToggleCheckbox");
+      if (checkbox) checkbox.checked = false;
+    }
   });
 
   const scrollBtn = $("#scrollTopBtn");

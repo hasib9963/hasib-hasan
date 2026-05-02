@@ -1,529 +1,352 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hasib Hasan | Backend Developer</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hasib Hasan | Backend Developer</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome 6 -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-    <!-- Devicon -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-    />
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#0EA5E9",
-              primaryDark: "#0284C7",
-              accent: "#6366F1",
-              softWhite: "#F0F9FF",
-              softDark: "#0F172A",
-            },
-            fontFamily: {
-              sans: ["Sora", "system-ui", "sans-serif"],
-              mono: ["JetBrains Mono", "monospace"],
-            },
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Font Awesome 6 -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+  <!-- Devicon -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+  />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#0EA5E9",
+            primaryDark: "#0284C7",
+            accent: "#6366F1",
+            softWhite: "#F0F9FF",
+            softDark: "#0F172A",
+          },
+          fontFamily: {
+            sans: ["Sora", "system-ui", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
           },
         },
-      };
-    </script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body class="site-body text-slate-900 dark:text-slate-100 antialiased">
-    <!-- Ambient page backdrop (fixed, behind content) -->
-    <div class="site-backdrop" aria-hidden="true">
-      <div class="site-backdrop-gradient"></div>
-      <div class="site-backdrop-grid"></div>
-    </div>
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="site-body text-slate-900 dark:text-slate-100 antialiased">
+  <!-- Ambient page backdrop -->
+  <div class="site-backdrop" aria-hidden="true">
+    <div class="site-backdrop-gradient"></div>
+    <div class="site-backdrop-grid"></div>
+  </div>
 
-    <!-- ========== CURSOR ========== -->
-    <div id="cursor" class="cursor"></div>
-    <div id="cursorTrail" class="cursor-trail"></div>
+  <!-- Cursor -->
+  <div id="cursor" class="cursor"></div>
+  <div id="cursorTrail" class="cursor-trail"></div>
 
-    <!-- ========== HEADER ========== -->
-    <header
-      id="navbar"
-      class="glass-nav sticky top-0 z-50 border-b border-white/20 dark:border-white/[0.06]"
-    >
-      <div
-        class="max-w-7xl mx-auto px-4 py-3 md:grid md:grid-cols-[auto_1fr_auto] md:items-center flex items-center justify-between gap-4"
-      >
-        <a href="#hero" class="brand-logo" aria-label="Hasib home">H</a>
+  <!-- ========== HEADER ========== -->
+  <header id="navbar" class="glass-nav sticky top-0 z-50 border-b border-white/20 dark:border-white/[0.06]">
+    <div class="max-w-7xl mx-auto px-4 py-3 md:grid md:grid-cols-[auto_1fr_auto] md:items-center flex items-center justify-between gap-4">
+      <a href="#hero" class="brand-logo" aria-label="Hasib home">H</a>
 
-        <!-- Desktop nav -->
-        <nav class="hidden md:flex items-center justify-center gap-1">
-          <a class="nav-link" href="#hero">Home</a>
-          <a class="nav-link" href="#about">About</a>
-          <!-- <a class="nav-link" href="#experience">Experience</a> -->
-          <a class="nav-link" href="#skills">Skills</a>
-          <a class="nav-link" href="#projects">Projects</a>
-          <a class="nav-link" href="#contact">Contact</a>
-        </nav>
-        <div class="hidden md:flex items-center justify-end gap-2">
-          <!-- ... inside the desktop nav div ... -->
-          <div class="hidden md:flex items-center justify-end gap-2">
-            <!-- REPLACE FROM HERE -->
-            <label class="switch">
-              <span class="sun"
-                ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <g fill="#ffd43b">
-                    <circle r="5" cy="12" cx="12"></circle>
-                    <path
-                      d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1 -.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1 -.75.29zm-12.02 12.02a1 1 0 0 1 -.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1 -.7.24zm6.36-14.36a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm0 17a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm-5.66-14.66a1 1 0 0 1 -.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.29zm12.02 12.02a1 1 0 0 1 -.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.24z"
-                    ></path>
-                  </g></svg
-              ></span>
-              <span class="moon"
-                ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                  <path
-                    d="m223.5 32c-123.5 0-223.5 100.3-223.5 224s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"
-                  ></path></svg
-              ></span>
-              <input type="checkbox" class="input" id="themeToggle" />
-              <span class="slider"></span>
-            </label>
-            <!-- TO HERE -->
-
-            <a href="#contact" class="btn-primary ml-2">Hire me</a>
-          </div>
-
-          <a href="#contact" class="btn-primary ml-2">Hire me</a>
-        </div>
-
-        <!-- Mobile menu button -->
-        <button id="mobileMenuBtn" class="md:hidden text-2xl">
-          <i class="fa-solid fa-bars"></i>
-        </button>
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center justify-center gap-1">
+        <a class="nav-link" href="#hero">Home</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+      <div class="hidden md:flex items-center justify-end gap-2">
+        <!-- Theme toggle (sun/moon) -->
+        <label class="switch">
+          <span class="sun">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g fill="#ffd43b">
+                <circle r="5" cy="12" cx="12"></circle>
+                <path d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1 -.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1 -.75.29zm-12.02 12.02a1 1 0 0 1 -.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1 -.7.24zm6.36-14.36a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm0 17a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm-5.66-14.66a1 1 0 0 1 -.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.29zm12.02 12.02a1 1 0 0 1 -.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.24z"></path>
+              </g>
+            </svg>
+          </span>
+          <span class="moon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+              <path d="m223.5 32c-123.5 0-223.5 100.3-223.5 224s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
+            </svg>
+          </span>
+          <input type="checkbox" class="input" id="themeToggle" />
+          <span class="slider"></span>
+        </label>
+        <a href="#contact" class="btn-primary ml-2">Hire me</a>
       </div>
 
-      <!-- Mobile menu -->
-      <nav
-        id="mobileMenu"
-        class="md:hidden hidden border-t border-white/15 dark:border-white/10 px-4 py-3 glass-panel-solid"
-      >
-        <div class="flex flex-col gap-2">
-          <a class="nav-link" href="#hero">Home</a>
-          <a class="nav-link" href="#about">About</a>
-          <!-- <a class="nav-link" href="#experience">Experience</a> -->
-          <a class="nav-link" href="#skills">Skills</a>
-          <a class="nav-link" href="#projects">Projects</a>
-          <a class="nav-link" href="#contact">Contact</a>
-          <button id="themeToggleMobile" class="btn-outline mt-2">
-            Toggle theme
-          </button>
-          <a href="#contact" class="btn-primary text-center mt-1">Hire me</a>
-        </div>
-      </nav>
-    </header>
+      <!-- Mobile hamburger + menu -->
+      <div class="md:hidden relative">
+        <input id="mobileToggleCheckbox" type="checkbox" class="hidden peer/menu" />
+        <label for="mobileToggleCheckbox" class="hamburger cursor-pointer">
+          <svg viewBox="0 0 32 32">
+            <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+            <path class="line" d="M7 16 27 16"></path>
+          </svg>
+        </label>
 
-    <main>
-      <!-- ========== HERO ========== -->
-      <section
-        class="intro-bg pt-16 pb-28 lg:pb-40 relative overflow-hidden"
-        id="hero"
-      >
-        <!-- Ambient background orbs -->
-        <div class="ambient-orb orb-1"></div>
-        <div class="ambient-orb orb-2"></div>
-        <div class="ambient-orb orb-3"></div>
-        <!-- Grid overlay -->
-        <div class="hero-grid"></div>
-
-        <div
-          class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center relative z-10"
-        >
-          <!-- Left content -->
-          <div class="hero-left" data-parallax="0.08">
-            <div class="availability-badge fade-in-up" style="--d: 0ms">
-              <span class="avail-dot"></span>
-              <span>Available for opportunities</span>
-            </div>
-            <h1
-              class="hero-title text-4xl lg:text-6xl font-bold leading-tight mt-5 fade-in-up"
-              style="--d: 100ms"
-            >
-              Hi, I'm<br />
-              <span class="hero-name"
-                >Hasib MD.<br class="hidden lg:block" />
-                Mahede Hasan</span
-              >
-            </h1>
-            <p
-              class="mt-5 text-lg text-slate-600 dark:text-slate-300 fade-in-up"
-              style="--d: 200ms"
-            >
-              <span id="typewriterText" class="role-highlight"
-                >Python Django Developer</span
-              ><span class="typewriter-cursor"></span>
-            </p>
-            <p
-              class="mt-3 text-slate-500 dark:text-slate-400 max-w-md fade-in-up"
-              style="--d: 300ms"
-            >
-              Backend Engineer focused on clean architecture, scalable APIs &
-              solid data layers.
-            </p>
-            <div
-              class="mt-7 flex flex-wrap gap-3 fade-in-up"
-              style="--d: 400ms"
-            >
-              <a href="#projects" class="btn-primary">
-                <i class="fa-solid fa-eye"></i> View My Work
+        <nav id="mobileMenu" class="peer-checked/menu:block hidden absolute top-full right-0 mt-2 w-64 glass-panel-solid p-4 z-50 border border-white/15 dark:border-white/10 rounded-xl">
+          <ul class="flex flex-col gap-1">
+            <li class="mobile-menu-item">
+              <a href="#hero" class="mobile-menu-link">
+                <span class="mobile-menu-icon"><i class="fa-solid fa-house"></i></span>
+                <span class="mobile-menu-label">Home</span>
               </a>
-              <a href="#contact" class="btn-outline">
-                <i class="fa-solid fa-paper-plane"></i> Get In Touch
+            </li>
+            <li class="mobile-menu-item">
+              <a href="#about" class="mobile-menu-link">
+                <span class="mobile-menu-icon"><i class="fa-solid fa-user"></i></span>
+                <span class="mobile-menu-label">About</span>
               </a>
-            </div>
-            <div
-              class="grid grid-cols-3 gap-3 mt-10 max-w-md fade-in-up"
-              id="summaryCards"
-              style="--d: 500ms"
-            ></div>
-          </div>
+            </li>
+            <li class="mobile-menu-item">
+              <a href="#skills" class="mobile-menu-link">
+                <span class="mobile-menu-icon"><i class="fa-solid fa-layer-group"></i></span>
+                <span class="mobile-menu-label">Skills</span>
+              </a>
+            </li>
+            <li class="mobile-menu-item">
+              <a href="#projects" class="mobile-menu-link">
+                <span class="mobile-menu-icon"><i class="fa-solid fa-folder-open"></i></span>
+                <span class="mobile-menu-label">Projects</span>
+              </a>
+            </li>
+            <li class="mobile-menu-item">
+              <a href="#contact" class="mobile-menu-link">
+                <span class="mobile-menu-icon"><i class="fa-solid fa-envelope"></i></span>
+                <span class="mobile-menu-label">Contact</span>
+              </a>
+            </li>
+            <li class="mobile-menu-item">
+              <button id="themeToggleMobile" class="mobile-menu-link w-full">
+                <span class="mobile-menu-icon"><i class="fa-solid fa-circle-half-stroke"></i></span>
+                <span class="mobile-menu-label">Toggle Theme</span>
+              </button>
+            </li>
+            <li class="pt-1">
+              <a href="#contact" class="btn-primary w-full text-center">Hire me</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-          <!-- Right: Terminal -->
-          <div
-            class="hero-terminal-wrap fade-in-up"
-            style="--d: 200ms"
-            data-parallax="0.12"
-          >
-            <div class="terminal-glow"></div>
-            <div class="terminal-window">
-              <div class="terminal-header">
-                <span class="terminal-dot red"></span>
-                <span class="terminal-dot yellow"></span>
-                <span class="terminal-dot green"></span>
-                <span class="ml-3 text-xs text-slate-400 font-mono"
-                  >terminal — Hasib@backend</span
-                >
-              </div>
-              <div class="terminal-body" id="terminalBody">
-                <span class="terminal-comment"># Initialize Django project</span
-                ><br />
-                <span class="terminal-prompt">$</span> django-admin startproject
-                core .<br /><br />
-                <span class="terminal-comment"
-                  ># Create a REST API endpoint</span
-                ><br />
-                <span class="terminal-prompt">$</span>
-                <span class="terminal-keyword">from</span> rest_framework
-                <span class="terminal-keyword">import</span> viewsets<br />
-                <span class="terminal-prompt">&gt;&gt;&gt;</span>
-                <span class="terminal-func">class</span>
-                <span class="terminal-output">UserViewSet</span
-                >(viewsets.ModelViewSet):<br />
-                <span class="terminal-prompt">...</span> &nbsp;&nbsp;queryset =
-                User.objects.<span class="terminal-func">all</span>()<br />
-                <span class="terminal-prompt">...</span>
-                &nbsp;&nbsp;serializer_class =
-                <span class="terminal-string">UserSerializer</span><br /><br />
-                <span class="terminal-comment"># Deploy &amp; scale</span><br />
-                <span class="terminal-prompt">$</span>
-                <span class="terminal-output">API running on 0.0.0.0:8000</span>
-                🚀<br />
-                <span class="terminal-prompt">$</span>
-                <span id="typingText"></span
-                ><span class="terminal-cursor"></span>
-              </div>
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="intro-bg pt-16 pb-28 lg:pb-40 relative overflow-hidden" id="hero">
+      <div class="ambient-orb orb-1"></div>
+      <div class="ambient-orb orb-2"></div>
+      <div class="ambient-orb orb-3"></div>
+      <div class="hero-grid"></div>
+
+      <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+        <div class="hero-left" data-parallax="0.08">
+          <div class="availability-badge fade-in-up" style="--d: 0ms">
+            <span class="avail-dot"></span>
+            <span>Available for opportunities</span>
+          </div>
+          <h1 class="hero-title text-4xl lg:text-6xl font-bold leading-tight mt-5 fade-in-up" style="--d: 100ms">
+            Hi, I'm<br />
+            <span class="hero-name">Hasib MD.<br class="hidden lg:block" /> Mahede Hasan</span>
+          </h1>
+          <p class="mt-5 text-lg text-slate-600 dark:text-slate-300 fade-in-up" style="--d: 200ms">
+            <span id="typewriterText" class="role-highlight">Python Django Developer</span><span class="typewriter-cursor"></span>
+          </p>
+          <p class="mt-3 text-slate-500 dark:text-slate-400 max-w-md fade-in-up" style="--d: 300ms">
+            Backend Engineer focused on clean architecture, scalable APIs & solid data layers.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3 fade-in-up" style="--d: 400ms">
+            <a href="#projects" class="btn-primary"><i class="fa-solid fa-eye"></i> View My Work</a>
+            <a href="#contact" class="btn-outline"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
+          </div>
+          <div class="grid grid-cols-3 gap-3 mt-10 max-w-md fade-in-up" id="summaryCards" style="--d: 500ms"></div>
+        </div>
+
+        <div class="hero-terminal-wrap fade-in-up" style="--d: 200ms" data-parallax="0.12">
+          <div class="terminal-glow"></div>
+          <div class="terminal-window">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="ml-3 text-xs text-slate-400 font-mono">terminal — Hasib@backend</span>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+              <span class="terminal-comment"># Initialize Django project</span><br />
+              <span class="terminal-prompt">$</span> django-admin startproject core .<br /><br />
+              <span class="terminal-comment"># Create a REST API endpoint</span><br />
+              <span class="terminal-prompt">$</span> <span class="terminal-keyword">from</span> rest_framework <span class="terminal-keyword">import</span> viewsets<br />
+              <span class="terminal-prompt">&gt;&gt;&gt;</span> <span class="terminal-func">class</span> <span class="terminal-output">UserViewSet</span>(viewsets.ModelViewSet):<br />
+              <span class="terminal-prompt">...</span> &nbsp;&nbsp;queryset = User.objects.<span class="terminal-func">all</span>()<br />
+              <span class="terminal-prompt">...</span> &nbsp;&nbsp;serializer_class = <span class="terminal-string">UserSerializer</span><br /><br />
+              <span class="terminal-comment"># Deploy &amp; scale</span><br />
+              <span class="terminal-prompt">$</span> <span class="terminal-output">API running on 0.0.0.0:8000</span> 🚀<br />
+              <span class="terminal-prompt">$</span> <span id="typingText"></span><span class="terminal-cursor"></span>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Scroll indicator -->
-        <div
-          class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 fade-in-up"
-          style="--d: 700ms"
-        >
-          <span
-            class="text-xs text-slate-400 dark:text-slate-500 tracking-[0.2em] uppercase"
-            >Scroll</span
-          >
-          <div class="scroll-mouse">
-            <div class="scroll-mouse-dot"></div>
-          </div>
-        </div>
-      </section>
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 fade-in-up" style="--d: 700ms">
+        <span class="text-xs text-slate-400 dark:text-slate-500 tracking-[0.2em] uppercase">Scroll</span>
+        <div class="scroll-mouse"><div class="scroll-mouse-dot"></div></div>
+      </div>
+    </section>
 
-      <!-- ========== ABOUT ========== -->
-      <section id="about" class="section-band section-band--alt">
-        <div
-          class="section-divider section-reveal-line"
-          aria-hidden="true"
-        ></div>
-        <div class="max-w-7xl mx-auto px-4 py-20 lg:py-28">
-          <div
-            class="about-editorial grid lg:grid-cols-[minmax(280px,400px)_1fr] gap-12 lg:gap-16 xl:gap-24 items-start"
-          >
-            <aside class="about-visual lg:sticky lg:top-28 reveal-scale">
-              <div class="profile-media-wrap">
-                <div class="glass-photo-ring">
-                  <div class="profile-media">
-                    <img
-                      src="hasib-hasan.png"
-                      alt="Hasib Hasan"
-                      class="w-full h-full object-cover"
-                    />
-                    <div class="profile-media-overlay">
-                      <div class="profile-media-tag">
-                        <i class="fa-solid fa-code text-primary"></i>
-                        <span>Backend Developer</span>
-                      </div>
+    <!-- ========== ABOUT ========== -->
+    <section id="about" class="section-band section-band--alt">
+      <div class="section-divider section-reveal-line" aria-hidden="true"></div>
+      <div class="max-w-7xl mx-auto px-4 py-20 lg:py-28">
+        <div class="about-editorial grid lg:grid-cols-[minmax(280px,400px)_1fr] gap-12 lg:gap-16 xl:gap-24 items-start">
+          <aside class="about-visual lg:sticky lg:top-28 reveal-scale">
+            <div class="profile-media-wrap">
+              <div class="glass-photo-ring">
+                <div class="profile-media">
+                  <img src="hasib-hasan.png" alt="Hasib Hasan" class="w-full h-full object-cover" />
+                  <div class="profile-media-overlay">
+                    <div class="profile-media-tag">
+                      <i class="fa-solid fa-code text-primary"></i>
+                      <span>Backend Developer</span>
                     </div>
                   </div>
                 </div>
-                <div class="profile-social-bar">
-                  <div
-                    class="flex justify-center gap-2"
-                    id="profileSocial"
-                  ></div>
-                </div>
               </div>
-            </aside>
-            <div class="about-copy reveal-from-right">
-              <p class="section-kicker">
-                <i class="fa-solid fa-user-gear"></i> About Me
-              </p>
-              <h2 class="section-title mt-4 text-balance">
-                Backend Engineering with
-                <span class="text-gradient"
-                  >clean design and dependable delivery</span
-                >
-              </h2>
-              <p
-                class="text-slate-600 dark:text-slate-400 mt-6 leading-relaxed text-lg max-w-2xl"
-              >
-                I design and ship backend architecture that keeps products
-                stable, scalable, and easy to maintain. My focus is API-first
-                development, robust data modeling, and clean service structure.
-              </p>
-              <div
-                class="about-points mt-10 reveal-stagger"
-                id="aboutPoints"
-              ></div>
-              <div class="mt-10 flex flex-wrap gap-3">
-                <a href="#projects" class="btn-primary">My Projects</a>
-                <button id="downloadResumeBtn" class="btn-outline">
-                  <i class="fa-solid fa-download"></i> Download Resume
-                </button>
+              <div class="profile-social-bar">
+                <div class="flex justify-center gap-2" id="profileSocial"></div>
               </div>
+            </div>
+          </aside>
+          <div class="about-copy reveal-from-right">
+            <p class="section-kicker"><i class="fa-solid fa-user-gear"></i> About Me</p>
+            <h2 class="section-title mt-4 text-balance">
+              Backend Engineering with <span class="text-gradient">clean design and dependable delivery</span>
+            </h2>
+            <p class="text-slate-600 dark:text-slate-400 mt-6 leading-relaxed text-lg max-w-2xl">
+              I design and ship backend architecture that keeps products stable, scalable, and easy to maintain. My focus is API-first development, robust data modeling, and clean service structure.
+            </p>
+            <div class="about-points mt-10 reveal-stagger" id="aboutPoints"></div>
+            <div class="mt-10 flex flex-wrap gap-3">
+              <a href="#projects" class="btn-primary">My Projects</a>
+              <button id="downloadResumeBtn" class="btn-outline"><i class="fa-solid fa-download"></i> Download Resume</button>
             </div>
           </div>
         </div>
-      </section>
-
-      <!-- ========== EXPERIENCE ========== -->
-      <!-- <section id="experience" class="max-w-7xl mx-auto px-4 py-20">
-        <div class="text-center max-w-2xl mx-auto fade-up">
-          <p class="section-kicker justify-center"><i class="fa-solid fa-briefcase"></i> Experience</p>
-          <h2 class="section-title mt-3">My Professional Journey</h2>
-          <p class="text-slate-500 dark:text-slate-400 mt-4">Building real-world systems and growing through hands-on backend engineering challenges.</p>
-        </div>
-
-        <div class="timeline mt-16" id="experienceTimeline"></div>
-      </section> -->
-
-      <!-- ========== SKILLS ========== -->
-      <section
-        id="skills"
-        class="section-band skills-band py-20 lg:py-28 relative"
-      >
-        <div class="max-w-7xl mx-auto px-4 relative z-[1]">
-          <div class="fade-up">
-            <p class="section-kicker">
-              <i class="fa-solid fa-layer-group"></i> Skills
-            </p>
-            <h2 class="section-title mt-3">My Tech Arsenal</h2>
-            <p
-              class="text-slate-500 dark:text-slate-400 mt-5 max-w-3xl leading-relaxed"
-            >
-              I build secure, scalable backend systems with strong API
-              contracts, efficient data architecture, and deployment-ready
-              engineering. The workflow stays performance-focused from design to
-              production.
-            </p>
-            <div
-              class="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mt-10 reveal-stagger"
-              id="skillsBriefCards"
-            ></div>
-          </div>
-
-          <div class="mt-20 fade-up">
-            <h3 class="text-2xl font-bold mb-2">Tech Stack</h3>
-            <p class="text-slate-500 dark:text-slate-400 mb-8">
-              Technologies I've mastered for building production-ready backend
-              systems.
-            </p>
-            <div class="tech-orb-wrap reveal-scale">
-              <div class="tech-icon-orb" id="techIconOrb"></div>
-            </div>
-            <div
-              class="tech-group-grid mt-12 reveal-stagger"
-              id="techStackGroups"
-            ></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ========== PROJECTS ========== -->
-      <section id="projects" class="section-band section-band--alt">
-        <div
-          class="section-divider section-reveal-line"
-          aria-hidden="true"
-        ></div>
-        <div class="max-w-7xl mx-auto px-4 py-20 lg:py-28">
-          <div class="text-center max-w-3xl mx-auto fade-up">
-            <p class="section-kicker justify-center">
-              <i class="fa-solid fa-folder-open"></i> Portfolio
-            </p>
-            <h2 class="section-title mt-3">Featured Work</h2>
-            <p class="text-slate-500 dark:text-slate-400 mt-4">
-              Backend-heavy projects showcasing API design, database
-              architecture, and system thinking.
-            </p>
-          </div>
-          <div
-            class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-14 reveal-stagger"
-            id="projectCards"
-          ></div>
-          <div class="text-center mt-12 fade-up">
-            <a
-              href="https://github.com/hasib9963?tab=projects"
-              target="_blank"
-              class="btn-primary inline-flex gap-2"
-            >
-              <i class="fa-brands fa-github"></i> View All Projects
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ========== CONTACT ========== -->
-      <section id="contact" class="relative z-10 px-4 py-20 lg:py-28">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12">
-          <div class="glass-panel contact-side p-8 lg:p-10 reveal-from-left">
-            <p class="section-kicker">
-              <i class="fa-solid fa-envelope"></i> Contact
-            </p>
-            <h2 class="section-title mt-4">Let's discuss your Project</h2>
-            <p class="text-slate-600 dark:text-slate-400 mt-5 leading-relaxed">
-              I'm available for freelance work or full-time opportunities. Drop
-              a line if you think we'd be a good fit.
-            </p>
-            <div class="mt-10 space-y-3" id="addressCards"></div>
-          </div>
-          <div
-            class="glass-panel contact-side p-8 lg:p-10 reveal-from-right"
-            data-delay="120"
-          >
-            <p class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-              I'm always open to discussing product design work or partnership
-              opportunities.
-            </p>
-            <form id="contactForm" class="grid gap-5">
-              <div class="input-wrap">
-                <input
-                  name="name"
-                  class="input-field"
-                  placeholder=" "
-                  required
-                />
-                <label class="input-label">Your Name *</label>
-              </div>
-              <div class="input-wrap">
-                <input
-                  name="email"
-                  type="email"
-                  class="input-field"
-                  placeholder=" "
-                  required
-                />
-                <label class="input-label">Email Address *</label>
-              </div>
-              <div class="input-wrap">
-                <input
-                  name="subject"
-                  class="input-field"
-                  placeholder=" "
-                  required
-                />
-                <label class="input-label">Subject *</label>
-              </div>
-              <div class="input-wrap">
-                <textarea
-                  name="message"
-                  rows="4"
-                  class="input-field"
-                  placeholder=" "
-                  required
-                ></textarea>
-                <label class="input-label">Message *</label>
-              </div>
-              <button
-                type="submit"
-                id="sendMessageBtn"
-                class="btn-primary w-fit"
-              >
-                Send Message <i class="fa-solid fa-paper-plane ml-1"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- ========== FOOTER ========== -->
-    <footer
-      class="border-t border-white/15 dark:border-white/[0.06] mt-6 glass-footer"
-    >
-      <div
-        class="max-w-7xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400"
-      >
-        <a href="#hero" class="brand-logo" aria-label="Hasib home">H</a>
-        <p class="text-center">
-          Copyright &copy; <span id="year"></span> Hasib Hasan. All rights
-          reserved.
-        </p>
-        <div class="flex justify-center gap-2" id="footerSocial"></div>
       </div>
-    </footer>
+    </section>
 
-    <!-- Scroll to top -->
-    <button
-      id="scrollTopBtn"
-      class="hidden fixed right-6 bottom-6 w-12 h-12 rounded-full bg-primary text-white shadow-xl z-50 transition-all"
-    >
-      <i class="fa-solid fa-angle-up"></i>
-    </button>
+    <!-- ========== SKILLS ========== -->
+    <section id="skills" class="section-band skills-band py-20 lg:py-28 relative">
+      <div class="max-w-7xl mx-auto px-4 relative z-[1]">
+        <div class="fade-up">
+          <p class="section-kicker"><i class="fa-solid fa-layer-group"></i> Skills</p>
+          <h2 class="section-title mt-3">My Tech Arsenal</h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-5 max-w-3xl leading-relaxed">
+            I build secure, scalable backend systems with strong API contracts, efficient data architecture, and deployment-ready engineering.
+          </p>
+          <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mt-10 reveal-stagger" id="skillsBriefCards"></div>
+        </div>
+        <div class="mt-20 fade-up">
+          <h3 class="text-2xl font-bold mb-2">Tech Stack</h3>
+          <p class="text-slate-500 dark:text-slate-400 mb-8">Technologies I've mastered for building production-ready backend systems.</p>
+          <div class="tech-orb-wrap reveal-scale"><div class="tech-icon-orb" id="techIconOrb"></div></div>
+          <div class="tech-group-grid mt-12 reveal-stagger" id="techStackGroups"></div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Toast -->
-    <div
-      id="toast"
-      class="toast"
-      role="status"
-      aria-live="polite"
-      aria-atomic="true"
-    >
-      <div class="toast-title" id="toastTitle">Done</div>
-      <div class="toast-msg" id="toastMsg">Saved.</div>
+    <!-- ========== PROJECTS ========== -->
+    <section id="projects" class="section-band section-band--alt">
+      <div class="section-divider section-reveal-line" aria-hidden="true"></div>
+      <div class="max-w-7xl mx-auto px-4 py-20 lg:py-28">
+        <div class="text-center max-w-3xl mx-auto fade-up">
+          <p class="section-kicker justify-center"><i class="fa-solid fa-folder-open"></i> Portfolio</p>
+          <h2 class="section-title mt-3">Featured Work</h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-4">Backend-heavy projects showcasing API design, database architecture, and system thinking.</p>
+        </div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-14 reveal-stagger" id="projectCards"></div>
+        <div class="text-center mt-12 fade-up">
+          <a href="https://github.com/hasib9963?tab=projects" target="_blank" class="btn-primary inline-flex gap-2">
+            <i class="fa-brands fa-github"></i> View All Projects
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="relative z-10 px-4 py-20 lg:py-28">
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div class="glass-panel contact-side p-8 lg:p-10 reveal-from-left">
+          <p class="section-kicker"><i class="fa-solid fa-envelope"></i> Contact</p>
+          <h2 class="section-title mt-4">Let's discuss your Project</h2>
+          <p class="text-slate-600 dark:text-slate-400 mt-5 leading-relaxed">I'm available for freelance work or full-time opportunities.</p>
+          <div class="mt-10 space-y-3" id="addressCards"></div>
+        </div>
+        <div class="glass-panel contact-side p-8 lg:p-10 reveal-from-right" data-delay="120">
+          <p class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">I'm always open to discussing product design work or partnership opportunities.</p>
+          <form id="contactForm" class="grid gap-5">
+            <div class="input-wrap">
+              <input name="name" class="input-field" placeholder=" " required />
+              <label class="input-label">Your Name *</label>
+            </div>
+            <div class="input-wrap">
+              <input name="email" type="email" class="input-field" placeholder=" " required />
+              <label class="input-label">Email Address *</label>
+            </div>
+            <div class="input-wrap">
+              <input name="subject" class="input-field" placeholder=" " required />
+              <label class="input-label">Subject *</label>
+            </div>
+            <div class="input-wrap">
+              <textarea name="message" rows="4" class="input-field" placeholder=" " required></textarea>
+              <label class="input-label">Message *</label>
+            </div>
+            <button type="submit" id="sendMessageBtn" class="btn-primary w-fit">
+              Send Message <i class="fa-solid fa-paper-plane ml-1"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="border-t border-white/15 dark:border-white/[0.06] mt-6 glass-footer">
+    <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
+      <a href="#hero" class="brand-logo" aria-label="Hasib home">H</a>
+      <p class="text-center">Copyright &copy; <span id="year"></span> Hasib Hasan. All rights reserved.</p>
+      <div class="flex justify-center gap-2" id="footerSocial"></div>
     </div>
+  </footer>
 
-    <script src="main.js"></script>
-  </body>
+  <!-- Scroll to top -->
+  <button id="scrollTopBtn" class="hidden fixed right-6 bottom-6 w-12 h-12 rounded-full bg-primary text-white shadow-xl z-50 transition-all">
+    <i class="fa-solid fa-angle-up"></i>
+  </button>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true">
+    <div class="toast-title" id="toastTitle">Done</div>
+    <div class="toast-msg" id="toastMsg">Saved.</div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
 </html>
