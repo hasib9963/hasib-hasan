@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hasib Hasan | Backend Developer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <!-- Devicon for tech stack icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <!-- Tailwind (utilities only) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#9929fb",
+              primaryDark: "#650fa0",
+              softWhite: "#f0f1f3",
+              softDark: "#87909d",
+            },
+            fontFamily: {
+              sans: ["Work Sans", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <!-- ========== HEADER ========== -->
+    <header
+      id="navbar"
+      class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-transparent dark:border-slate-700"
+    >
+      <div class="max-w-7xl mx-auto px-4 py-3 md:grid md:grid-cols-[auto_1fr_auto] md:items-center flex items-center justify-between gap-4">
+        <a href="#hero" class="brand-logo" aria-label="Hasib home">H</a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center justify-center gap-2">
+          <a class="nav-link" href="#hero">Home</a>
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#skills">Skills</a>
+          <a class="nav-link" href="#projects">Projects</a>
+          <a class="nav-link" href="#contact">Contact</a>
+        </nav>
+        <div class="hidden md:flex items-center justify-end gap-2">
+          <button id="themeToggle" class="ml-2 p-2 rounded-full hover:bg-primary/10 transition" aria-label="Toggle theme">
+            <i id="themeIcon" class="fa-solid fa-moon text-xl"></i>
+          </button>
+          <a href="#contact" class="btn-primary ml-2">Hire me</a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="mobileMenuBtn" class="md:hidden text-2xl">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <nav
+        id="mobileMenu"
+        class="md:hidden hidden border-t border-slate-200 dark:border-slate-700 px-4 py-3 bg-white dark:bg-slate-900"
+      >
+        <div class="flex flex-col gap-2">
+          <a class="nav-link" href="#hero">Home</a>
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#skills">Skills</a>
+          <a class="nav-link" href="#projects">Projects</a>
+          <a class="nav-link" href="#contact">Contact</a>
+          <button id="themeToggleMobile" class="btn-outline mt-2">Toggle theme</button>
+          <a href="#contact" class="btn-primary text-center mt-1">Hire me</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ========== HERO ========== -->
+      <section class="intro-bg pt-10 pb-24 lg:pb-32 relative" id="hero">
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-8 items-center">
+          <!-- Left content -->
+          <div class="fade-up">
+            <h1 class="hero-title text-4xl lg:text-6xl font-semibold leading-tight">
+              Hi, I'm<br />
+              <span class="hero-name">Hasib MD. Mahede Hasan</span>
+            </h1>
+            <p class="mt-6 text-lg text-slate-600 dark:text-slate-300">
+              <span id="typewriterText" class="bg-highlight px-1">Python Django Developer</span>
+              <span class="typewriter-cursor"></span>
+            </p>
+            <p class="mt-4 text-slate-600 dark:text-slate-400">
+              Backend Engineer focused on clean architecture, scalable APIs & solid data layers.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#projects" class="btn-primary">View My Work</a>
+              <a href="#contact" class="btn-outline">Get In Touch</a>
+            </div>
+            <div class="grid grid-cols-3 gap-2 mt-10 max-w-xl" id="summaryCards"></div>
+          </div>
+
+          <!-- Right: Terminal instead of photo -->
+          <div class="max-w-xl mx-auto fade-up">
+            <div class="terminal-window">
+              <div class="terminal-header">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+                <span class="ml-3 text-xs text-slate-400 font-mono">terminal — Hasib@backend</span>
+              </div>
+              <div class="terminal-body" id="terminalBody">
+                <span class="terminal-comment"># Initialize Django project</span><br />
+                <span class="terminal-prompt">$</span> django-admin startproject core .<br /><br />
+                <span class="terminal-comment"># Create a REST API endpoint</span><br />
+                <span class="terminal-prompt">$</span> <span class="terminal-keyword">from</span> rest_framework <span class="terminal-keyword">import</span> viewsets<br />
+                <span class="terminal-prompt">&gt;&gt;&gt;</span> <span class="terminal-func">class</span> <span class="terminal-output">UserViewSet</span>(viewsets.ModelViewSet):<br />
+                <span class="terminal-prompt">...</span> &nbsp;&nbsp;queryset = User.objects.<span class="terminal-func">all</span>()<br />
+                <span class="terminal-prompt">...</span> &nbsp;&nbsp;serializer_class = <span class="terminal-string">UserSerializer</span><br /><br />
+                <span class="terminal-comment"># Deploy &amp; scale</span><br />
+                <span class="terminal-prompt">$</span> <span class="terminal-output">API running on 0.0.0.0:8000</span> 🚀<br />
+                <span class="terminal-prompt">$</span> <span id="typingText"></span><span class="terminal-cursor"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll mouse icon -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 fade-up">
+          <span class="text-xs text-slate-500 dark:text-slate-400 tracking-widest uppercase">Scroll</span>
+          <div class="scroll-mouse w-5 h-9 rounded-full flex justify-center">
+            <div class="scroll-mouse-dot w-1 h-2.5 rounded-full mt-1.5"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== ABOUT (profile card) ========== -->
+      <section id="about" class="max-w-7xl mx-auto px-4 mt-12 lg:mt-20">
+        <div class="profile-card bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-4 sm:p-8 lg:p-14 grid md:grid-cols-2 gap-8 items-center fade-up">
+          <div class="profile-media-wrap">
+            <div class="profile-media">
+              <img
+                src="hasib-hasan.png"
+                alt="Hasib Hasan"
+                class="rounded-xl w-full h-full object-cover bg-softWhite dark:bg-slate-700"
+              />
+            </div>
+            <div class="profile-social-panel">
+              <div class="flex justify-center gap-2" id="profileSocial"></div>
+            </div>
+          </div>
+          <div>
+            <p class="section-kicker"><i class="fa-solid fa-user-gear"></i> About Me</p>
+            <h2 class="section-title mt-2">
+              Backend Engineering with <span class="text-primary">clean design and dependable delivery</span>
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 mt-6">
+              I design and ship backend architecture that keeps products stable,
+              scalable, and easy to maintain. My focus is API-first development,
+              robust data modeling, and clean service structure.
+            </p>
+            <div class="about-points mt-6" id="aboutPoints"></div>
+            <div class="mt-8 flex flex-wrap gap-3 md:gap-4">
+              <a href="#projects" class="btn-primary">My Projects</a>
+              <button id="downloadResumeBtn" class="btn-outline">
+                <i class="fa-solid fa-download mr-2"></i>Download Resume
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SKILLS ========== -->
+      <section id="skills" class="bg-softWhite dark:bg-slate-800 mt-16 py-16">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="fade-up">
+            <h2 class="section-title">My Tech Arsenal</h2>
+            <p class="text-slate-600 dark:text-slate-300 mt-6 max-w-3xl">
+              I build secure, scalable backend systems with strong API contracts, efficient data architecture, and deployment-ready engineering. The workflow stays performance-focused from design to production.
+            </p>
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mt-8" id="skillsBriefCards"></div>
+          </div>
+
+          <div class="mt-16 fade-up">
+            <h3 class="text-2xl font-semibold mb-2">Tech Stack</h3>
+            <p class="text-slate-600 dark:text-slate-300 mb-6">
+              Technologies I've mastered for building production-ready backend systems.
+            </p>
+            <div class="tech-orb-wrap">
+              <div class="tech-icon-orb" id="techIconOrb"></div>
+            </div>
+            <div class="tech-group-grid mt-10" id="techStackGroups"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== PROJECTS ========== -->
+      <section id="projects" class="max-w-7xl mx-auto px-4 py-16">
+        <div class="text-center max-w-3xl mx-auto fade-up">
+          <h2 class="section-title">Featured Work</h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-4">
+            Backend‑heavy projects showcasing API design, database architecture, and system thinking.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-12" id="projectCards"></div>
+        <div class="text-center mt-10 fade-up">
+          <a href="https://github.com/hasib9963?tab=projects" target="_blank" class="btn-primary inline-block">View All Projects</a>
+        </div>
+      </section>
+
+      <!-- ========== CTA BANNER ========== -->
+      <section class="bg-slate-900 py-16">
+        <div class="max-w-4xl px-4 mx-auto text-center fade-up">
+          <h2 class="text-white text-3xl lg:text-5xl font-semibold">
+            Do you have a Project Idea?<br />Let's discuss your project!
+          </h2>
+          <p class="text-slate-300 mt-5">
+            I’m always open to discussing new projects and creative ideas. Let’s build something amazing together.
+          </p>
+          <a href="#contact" class="btn-primary inline-flex items-center gap-2 mt-8">
+            Let's work Together <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- ========== CONTACT ========== -->
+      <section id="contact" class="relative z-10 px-4 -mb-16">
+        <div class="max-w-7xl mx-auto bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-6 lg:p-12 grid lg:grid-cols-2 gap-8 fade-up">
+          <div>
+            <h2 class="section-title">Let's discuss your Project</h2>
+            <p class="text-softDark dark:text-slate-300 mt-4">
+              I’m available for freelance work or full‑time opportunities. Drop a line if you think we’d be a good fit.
+            </p>
+            <div class="mt-8 space-y-3" id="addressCards"></div>
+          </div>
+          <div>
+            <p class="text-softDark dark:text-slate-300">
+              I’m always open to discussing product design work or partnership opportunities.
+            </p>
+            <form id="contactForm" class="mt-5 grid gap-4">
+              <input name="name" class="input-field" placeholder="Name*" required />
+              <input name="email" type="email" class="input-field" placeholder="Email*" required />
+              <input name="subject" class="input-field" placeholder="Subject*" required />
+              <textarea name="message" rows="4" class="input-field" placeholder="Message*" required></textarea>
+              <button type="submit" id="sendMessageBtn" class="btn-primary w-fit">
+                Send Message <i class="fa-solid fa-paper-plane ml-1"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="border-t border-slate-200 dark:border-slate-700 mt-16">
+      <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-600 dark:text-slate-300">
+        <a href="#hero" class="brand-logo" aria-label="Hasib home">H</a>
+        <p>Copyright &copy; <span id="year"></span> Hasib Hasan. All rights reserved.</p>
+        <div class="flex justify-center gap-2" id="footerSocial"></div>
+      </div>
+    </footer>
+
+    <!-- ========== SCROLL TO TOP ========== -->
+    <button
+      id="scrollTopBtn"
+      class="hidden fixed right-5 bottom-5 w-12 h-12 rounded-full bg-primary text-white shadow-lg z-50 transition-all"
+    >
+      <i class="fa-solid fa-angle-up"></i>
+    </button>
+
+    <!-- ========== TOAST ========== -->
+    <div
+      id="toast"
+      class="toast"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <div class="toast-title" id="toastTitle">Done</div>
+      <div class="toast-msg" id="toastMsg">Saved.</div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
