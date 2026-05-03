@@ -444,7 +444,10 @@ function renderTechStack() {
       const x = centerX + radiusX * Math.cos(angle);
       const y = centerY + radiusY * Math.sin(angle);
       const depth = idx % 2 === 0 ? "32px" : "10px";
-      return `<span class="orb-tech" style="left:${x}%;top:${y}%;--depth:${depth};--i:${idx}" title="${tech.name}"><i class="${tech.icon}"></i></span>`;
+      return `<span class="orb-tech" style="left:${x}%;top:${y}%;--depth:${depth};--i:${idx}">
+        <span class="orb-tooltip">${tech.name}</span>
+        <i class="${tech.icon}"></i>
+      </span>`;
     })
     .join("");
 }
