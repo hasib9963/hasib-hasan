@@ -1383,12 +1383,12 @@ footer {
 }
 /* Tech Orb (transparent background) */
 .tech-icon-orb {
-  width: min(700px, 95vw);        /* increased from 560px / 92vw */
-  height: 400px;                  /* increased from 300px */
+  width: min(700px, 95vw); /* increased from 560px / 92vw */
+  height: 400px; /* increased from 300px */
   position: relative;
   border-radius: 1.5rem;
   perspective: 1200px;
-  background: transparent;        /* no card background */
+  background: transparent; /* no card background */
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border: none;
@@ -1402,10 +1402,11 @@ footer {
   width: 54px;
   height: 54px;
   border-radius: 0.8rem;
-  background: var(--glass-bg-strong);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--glass-border);
+  /* ← removed glass background, blur, and border */
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1413,11 +1414,10 @@ footer {
   cursor: default;
   transition:
     transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+    filter 0.3s ease;
   animation: floatOrb calc(3s + var(--i) * 0.4s) ease-in-out infinite;
   animation-delay: calc(var(--i) * -0.4s);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: none; /* no shadow */
 }
 .orb-tech:hover {
   transform: translate(-50%, -50%) translateZ(calc(var(--depth) + 20px))
