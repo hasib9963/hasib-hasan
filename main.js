@@ -118,6 +118,17 @@ const techStackGroups = [
       { name: "SQLite", icon: "devicon-sqlite-plain colored" },
     ],
   },
+  {
+    title: "Deployment & Ops",
+    icon: "fa-server",
+    items: [
+      { name: "Docker", icon: "devicon-docker-plain colored" },
+      { name: "Nginx", icon: "devicon-nginx-original colored" },
+      { name: "Linux", icon: "devicon-linux-plain" },
+      { name: "Git", icon: "devicon-git-plain colored" },
+      { name: "GitHub", icon: "devicon-github-original" },
+    ],
+  },
 ];
 
 const techOrbIcons = [
@@ -425,8 +436,8 @@ function renderTechStack() {
   if (!orb) return;
   const centerX = 50,
     centerY = 50,
-    radiusX = 38,
-    radiusY = 32;
+    radiusX = 42,
+    radiusY = 36;
   orb.innerHTML = techOrbIcons
     .map((tech, idx) => {
       const angle = (idx / techOrbIcons.length) * Math.PI * 2;
