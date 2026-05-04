@@ -468,73 +468,125 @@
       </section>
 
       <!-- ========== CONTACT ========== -->
-      <section id="contact" class="relative z-10 px-4 py-20 lg:py-28">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12">
-          <div class="glass-panel contact-side p-8 lg:p-10 reveal-from-left">
-            <p class="section-kicker">
+      <!-- ========== CONTACT (unified, glass-backed) ========== -->
+      <section
+        id="contact"
+        class="contact-section relative z-10 px-4 py-20 lg:py-28"
+      >
+        <div class="max-w-7xl mx-auto">
+          <!-- Section header -->
+          <div class="text-center mb-14 lg:mb-18 fade-up">
+            <p class="section-kicker justify-center mx-auto">
               <i class="fa-solid fa-envelope"></i> Contact
             </p>
-            <h2 class="section-title mt-4">Let's discuss your Project</h2>
-            <p class="text-slate-600 dark:text-slate-400 mt-5 leading-relaxed">
-              I'm available for freelance work or full-time opportunities.
+            <h2 class="section-title mt-3 text-balance">
+              Let's discuss your <span class="text-gradient">Project</span>
+            </h2>
+            <p
+              class="text-slate-500 dark:text-slate-400 mt-4 max-w-xl mx-auto leading-relaxed"
+            >
+              I'm available for freelance work or full-time opportunities. Reach
+              out and let's build something great together.
             </p>
-            <div class="mt-10 space-y-3" id="addressCards"></div>
           </div>
-          <div
-            class="glass-panel contact-side p-8 lg:p-10 reveal-from-right"
-            data-delay="120"
-          >
-            <p class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-              I'm always open to discussing product design work or partnership
-              opportunities.
-            </p>
-            <form id="contactForm" class="grid gap-5">
-              <div class="input-wrap">
-                <input
-                  name="name"
-                  class="input-field"
-                  placeholder=" "
-                  required
-                />
-                <label class="input-label">Your Name *</label>
+
+          <!-- Unified glass block -->
+          <div class="contact-unified glass-panel reveal-scale">
+            <!-- Decorative top accent -->
+            <div class="contact-accent-line" aria-hidden="true"></div>
+
+            <div class="contact-grid">
+              <!-- Left: Contact Info -->
+              <div class="contact-info-side">
+                <p class="contact-info-eyebrow">
+                  <i class="fa-solid fa-circle-info text-primary text-xs"></i>
+                  Contact Information
+                </p>
+                <div id="addressCards" class="contact-info-list"></div>
               </div>
-              <div class="input-wrap">
-                <input
-                  name="email"
-                  type="email"
-                  class="input-field"
-                  placeholder=" "
-                  required
-                />
-                <label class="input-label">Email Address *</label>
+
+              <!-- Subtle vertical divider -->
+              <div class="contact-divider-vertical" aria-hidden="true">
+                <span class="contact-divider-dot"></span>
               </div>
-              <div class="input-wrap">
-                <input
-                  name="subject"
-                  class="input-field"
-                  placeholder=" "
-                  required
-                />
-                <label class="input-label">Subject *</label>
+
+              <!-- Right: Form -->
+              <div class="contact-form-side">
+                <p class="contact-form-eyebrow">
+                  <i class="fa-solid fa-pen-to-square text-primary text-xs"></i>
+                  Send a Message
+                </p>
+                <form id="contactForm" class="contact-form-grid">
+                  <!-- Name -->
+                  <div class="input-wrap-modern">
+                    <input
+                      name="name"
+                      class="input-field-modern"
+                      placeholder=" "
+                      required
+                    />
+                    <label class="input-label-modern">Your Name *</label>
+                    <i class="fa-solid fa-user input-icon"></i>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="input-wrap-modern">
+                    <input
+                      name="email"
+                      type="email"
+                      class="input-field-modern"
+                      placeholder=" "
+                      required
+                    />
+                    <label class="input-label-modern">Email Address *</label>
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                  </div>
+
+                  <!-- Subject -->
+                  <div class="input-wrap-modern sm:col-span-2">
+                    <input
+                      name="subject"
+                      class="input-field-modern"
+                      placeholder=" "
+                      required
+                    />
+                    <label class="input-label-modern">Subject *</label>
+                    <i class="fa-solid fa-pencil input-icon"></i>
+                  </div>
+
+                  <!-- Message -->
+                  <div
+                    class="input-wrap-modern sm:col-span-2 input-wrap-modern--textarea"
+                  >
+                    <textarea
+                      name="message"
+                      rows="4"
+                      class="input-field-modern"
+                      placeholder=" "
+                      required
+                    ></textarea>
+                    <label class="input-label-modern">Message *</label>
+                    <i class="fa-solid fa-message input-icon"></i>
+                  </div>
+
+                  <!-- Submit -->
+                  <div class="sm:col-span-2">
+                    <button
+                      type="submit"
+                      id="sendMessageBtn"
+                      class="btn-primary btn-primary-modern w-full sm:w-auto"
+                    >
+                      <span>Send Message</span>
+                      <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </form>
               </div>
-              <div class="input-wrap">
-                <textarea
-                  name="message"
-                  rows="4"
-                  class="input-field"
-                  placeholder=" "
-                  required
-                ></textarea>
-                <label class="input-label">Message *</label>
-              </div>
-              <button
-                type="submit"
-                id="sendMessageBtn"
-                class="btn-primary w-fit"
-              >
-                Send Message <i class="fa-solid fa-paper-plane ml-1"></i>
-              </button>
-            </form>
+            </div>
+
+            <!-- Corner glows -->
+            <div class="contact-glow contact-glow--tl" aria-hidden="true"></div>
+            <div class="contact-glow contact-glow--br" aria-hidden="true"></div>
           </div>
         </div>
       </section>

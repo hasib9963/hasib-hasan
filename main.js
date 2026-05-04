@@ -512,19 +512,21 @@ function renderAddresses() {
   el.innerHTML = addresses
     .map((a) => {
       const valueContent = a.html
-        ? `<div class="font-semibold text-slate-900 dark:text-white flex items-center gap-1 flex-wrap">${a.html}</div>`
-        : `<p class="font-semibold text-slate-900 dark:text-white">${a.value}</p>`;
+        ? `<div class="contact-info-value">${a.html}</div>`
+        : `<span class="contact-info-value">${a.value}</span>`;
       return `
-        <article class="address-card">
-          <span class="icon-box"><i class="fa-solid ${a.icon}"></i></span>
-          <div>
-            <p class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-0.5">${a.title}</p>
+        <div class="contact-info-item">
+          <span class="contact-info-icon">
+            <i class="fa-solid ${a.icon}"></i>
+          </span>
+          <div class="contact-info-text">
+            <span class="contact-info-label">${a.title}</span>
             ${valueContent}
           </div>
-        </article>`;
+        </div>`;
     })
     .join("");
-  // Now fill the social container
+  // Fill the social container if it exists
   renderSocial("#addressSocialContainer");
 }
 

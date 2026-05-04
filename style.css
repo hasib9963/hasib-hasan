@@ -1457,7 +1457,7 @@ footer {
 .orb-tech:hover .orb-tooltip {
   opacity: 1;
   visibility: visible;
-  bottom: calc(100% + 6px);   /* slight lift */
+  bottom: calc(100% + 6px); /* slight lift */
 }
 
 .tech-group-grid {
@@ -1643,75 +1643,584 @@ footer {
   background: rgb(var(--primary-rgb) / 0.08);
 }
 /* ===== Contact ===== */
-.input-wrap {
+/* ===== Redesigned Contact Section (glass + floating labels) ===== */
+.contact-section {
   position: relative;
+  isolation: isolate;
 }
-.input-field {
-  border: 0;
-  border-bottom: 2px solid var(--border-color);
-  padding: 1.1rem 0 0.5rem;
-  font-size: 0.95rem;
-  background: transparent;
-  color: var(--text-primary);
-  width: 100%;
-  font-family: inherit;
-  transition: border-color 0.3s ease;
+
+/* The unified block now uses the classic .glass-panel class,
+   so we just add the grid and decorative layers */
+.contact-unified {
+  position: relative;
+  overflow: hidden;
 }
-.input-field:focus {
-  outline: none;
-  border-bottom-color: var(--primary);
-}
-.input-label {
+
+/* Subtle top accent line */
+.contact-accent-line {
   position: absolute;
-  top: 1rem;
+  top: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary) 20%,
+    var(--primary-light) 50%,
+    var(--primary) 80%,
+    transparent
+  );
+  opacity: 0.6;
+  border-radius: 0 0 99px 99px;
+  animation: accentShimmer 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes accentShimmer {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* Two-column grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0;
+  padding: 2.5rem 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 1023px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* ---- Contact Info Side ---- */
+.contact-info-side {
+  padding-right: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 1023px) {
+  .contact-info-side {
+    padding-right: 0;
+  }
+}
+
+.contact-info-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+}
+
+/* ===== Contact Info Items: card-style with glass ===== */
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* spacing between cards */
+}
+
+.contact-info-item {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 0.85rem;
+  box-shadow:
+    0 4px 16px rgba(15, 23, 42, 0.04),
+    inset 0 1px 0 var(--glass-highlight);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  transition:
+    transform 0.35s var(--ease-out-soft),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    padding-left 0.3s ease;
+  position: relative;
+  /* overflow: hidden;  */
+  cursor: default;
+}
+
+/* Hover effects (keep exactly as you liked) */
+.contact-info-item:hover {
+  background: color-mix(in srgb, var(--glass-bg) 92%, var(--primary) 8%);
+  border-color: color-mix(in srgb, var(--primary) 45%, var(--glass-border));
+  box-shadow:
+    0 8px 28px rgba(15, 23, 42, 0.08),
+    0 0 0 1px color-mix(in srgb, var(--primary) 25%, transparent),
+    inset 0 1px 0 var(--glass-highlight);
+  transform: translateX(6px);
+  padding-left: 1.35rem;
+}
+
+/* Left sliding accent bar */
+.contact-info-item::before {
+  content: "";
+  position: absolute;
   left: 0;
+  top: 50%;
+  transform: translateY(-50%) scaleY(0);
+  width: 3px;
+  height: 60%;
+  background: var(--primary);
+  border-radius: 0 99px 99px 0;
+  transition: transform 0.35s var(--ease-out-soft);
+}
+
+.contact-info-item:hover::before {
+  transform: translateY(-50%) scaleY(1);
+}
+
+/* Icon circle (keep hover scaling/glow) */
+.contact-info-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+  font-size: 1.05rem;
+  transition:
+    background 0.35s ease,
+    transform 0.35s var(--ease-out-soft),
+    box-shadow 0.35s ease;
+  border: 1.5px solid color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.contact-info-item:hover .contact-info-icon {
+  background: var(--primary);
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+/* Text styling */
+.contact-info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.contact-info-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.contact-info-value {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  word-break: break-word;
+  transition: color 0.3s ease;
+}
+
+.contact-info-item:hover .contact-info-value {
+  color: var(--primary);
+}
+
+/* Social icons inside the card */
+.contact-info-value .example-1 {
+  justify-content: flex-start;
+}
+
+.contact-info-value .example-1 .icon-content .link {
+  width: 34px;
+  height: 34px;
+  font-size: 0.9rem;
+}
+
+/* Dark mode subtle adjustments for the card */
+.dark .contact-info-item {
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* ---- Vertical Divider ---- */
+.contact-divider-vertical {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-divider-vertical::before {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in srgb, var(--primary) 30%, var(--border-color)) 20%,
+    color-mix(in srgb, var(--primary) 30%, var(--border-color)) 80%,
+    transparent
+  );
+}
+
+.contact-divider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 50%, transparent);
+  animation: dividerPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes dividerPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 40%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 24px color-mix(in srgb, var(--primary) 65%, transparent),
+      0 0 48px color-mix(in srgb, var(--primary) 20%, transparent);
+  }
+}
+
+@media (max-width: 1023px) {
+  .contact-divider-vertical {
+    flex-direction: row;
+    height: 1px;
+    width: 100%;
+  }
+  .contact-divider-vertical::before {
+    top: 0;
+    bottom: auto;
+    left: 1.5rem;
+    right: 1.5rem;
+    width: auto;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in srgb, var(--primary) 30%, var(--border-color)) 20%,
+      color-mix(in srgb, var(--primary) 30%, var(--border-color)) 80%,
+      transparent
+    );
+  }
+}
+
+/* ---- Contact Form Side ---- */
+.contact-form-side {
+  padding-left: 2.5rem;
+}
+
+@media (max-width: 1023px) {
+  .contact-form-side {
+    padding-left: 0;
+  }
+}
+
+.contact-form-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+}
+
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Modern Input Wrap with floating label ---- */
+.input-wrap-modern {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Icon stays centered for single-line inputs */
+/* ===== Icon base ===== */
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 2;
+}
+
+/* Textarea: align icon with the first line */
+.input-wrap-modern--textarea .input-icon {
+  top: 0.85rem;
+  transform: none;
+}
+.input-wrap-modern--textarea :is(.input-field-modern:focus, .input-field-modern:not(:placeholder-shown)) ~ .input-label-modern {
+  top: -0.3rem;
+}
+.input-wrap-modern--textarea :is(.input-field-modern:focus, .input-field-modern:not(:placeholder-shown)) ~ .input-icon {
+  top: -0.3rem;
+}
+
+/* On focus or when filled – icon rises to the top border */
+.input-wrap-modern:has(.input-field-modern:focus) .input-icon,
+.input-wrap-modern:has(.input-field-modern:not(:placeholder-shown))
+  .input-icon {
+  top: -0.25rem; /* sits exactly on the border */
+  left: 0.65rem;
+  font-size: 0.68rem;
+  transform: none;
+  background: var(--glass-bg-strong); /* background covers the border behind */
+  padding: 0 0.25rem;
+  z-index: 4; /* above label and border */
+  color: var(--primary); /* match primary when active */
+}
+
+/* Textarea: same floating treatment */
+.input-wrap-modern--textarea:has(.input-field-modern:focus) .input-icon,
+.input-wrap-modern--textarea:has(.input-field-modern:not(:placeholder-shown))
+  .input-icon {
+  top: -0.25rem;
+}
+
+/* The input / textarea */
+.input-field-modern {
+  width: 100%;
+  padding: 1.1rem 1rem 0.5rem 2.65rem; /* extra top padding for label, left padding for icon */
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--bg-primary) 60%, transparent);
+  border: 1.5px solid var(--border-color);
+  border-radius: 0.75rem;
+  outline: none;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+.input-field-modern::placeholder {
+  color: transparent; /* hide native placeholder, let the floating label handle it */
+}
+
+.input-field-modern:focus {
+  border-color: var(--primary);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--primary) 12%, transparent),
+    0 4px 16px color-mix(in srgb, var(--primary) 8%, transparent);
+  background: var(--glass-bg-strong);
+}
+
+.input-field-modern:focus ~ .input-icon,
+.input-field-modern:not(:placeholder-shown) ~ .input-icon {
+  top: -0.3rem;                          /* same vertical alignment as label */
+  left: 0.65rem;
+  transform: none;
+  font-size: 0.75rem;
+  background: var(--glass-bg-strong);
+  padding: 0 0.2rem;
+  z-index: 3;
+  color: var(--primary);
+}
+
+/* Floating label */
+.input-label-modern {
+  position: absolute;
+  left: 2.65rem;
+  top: 30%;
   font-size: 0.9rem;
   color: var(--text-muted);
   pointer-events: none;
   transition: all 0.25s ease;
-}
-.input-field:focus ~ .input-label,
-.input-field:not(:placeholder-shown) ~ .input-label {
-  top: 0;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--primary);
+  background: transparent;
+  z-index: 1;
 }
 
-.address-card {
-  border-radius: 0.85rem;
-  padding: 0.85rem 1rem;
-  border: 1px solid
-    color-mix(in srgb, var(--glass-border) 70%, var(--border-color));
-  display: flex;
-  gap: 0.9rem;
-  align-items: center;
-  background: color-mix(in srgb, var(--glass-highlight) 45%, transparent);
-  transition:
-    transform 0.3s var(--reveal-ease),
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-}
-.address-card:hover {
-  border-color: color-mix(in srgb, var(--primary) 28%, var(--glass-border));
-  box-shadow: 0 6px 20px rgb(var(--primary-rgb) / 0.08);
-  transform: translateX(3px);
-}
-.icon-box {
-  width: 40px;
-  height: 40px;
-  border-radius: 0.55rem;
-  background: rgb(var(--primary-rgb) / 0.1);
+/* Rise up when focused or when placeholder is shown (input has content) */
+.input-field-modern:focus ~ .input-label-modern,
+.input-field-modern:not(:placeholder-shown) ~ .input-label-modern {
+  top: -0.3rem;                          /* exactly sits on the top border */
+  left: 2.2rem;                          /* slide a touch left to make room for icon? Actually icon is at left: 0.65rem on float, so label can stay at 2.5rem or so. I'll adjust */
+  font-size: 0.7rem;
+  font-weight: 600;
   color: var(--primary);
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-  border: 1px solid rgb(var(--primary-rgb) / 0.15);
+  background: var(--glass-bg-strong);    /* covers the border behind */
+  padding: 0 0.3rem;
+  border-radius: 4px;
+  z-index: 3;                            /* above the border */
 }
-.address-card:hover .icon-box {
-  background: var(--primary);
-  color: white;
+/* Textarea specific label adjustments */
+.input-wrap-modern--textarea .input-label-modern {
+  top: 0.72rem;
+}
+
+/* Submit button enhancement */
+.btn-primary-modern {
+  padding: 0.9rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition:
+    transform 0.35s var(--ease-out-soft),
+    box-shadow 0.35s var(--ease-out-soft),
+    filter 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-modern::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.btn-primary-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px color-mix(in srgb, var(--primary) 40%, transparent);
+  filter: brightness(1.05);
+}
+
+.btn-primary-modern:hover::after {
+  opacity: 1;
+}
+
+.btn-primary-modern:active {
+  transform: translateY(0);
+  filter: brightness(0.97);
+}
+
+/* Corner glow decorations */
+.contact-glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.contact-glow--tl {
+  width: 280px;
+  height: 280px;
+  top: -60px;
+  left: -40px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--primary) 18%, transparent),
+    transparent 70%
+  );
+}
+
+.contact-glow--br {
+  width: 320px;
+  height: 320px;
+  bottom: -80px;
+  right: -60px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent-soft) 14%, transparent),
+    transparent 70%
+  );
+}
+
+.dark .contact-glow--tl {
+  opacity: 0.35;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--primary) 22%, transparent),
+    transparent 70%
+  );
+}
+
+.dark .contact-glow--br {
+  opacity: 0.3;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent-soft) 18%, transparent),
+    transparent 70%
+  );
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .contact-grid {
+    padding: 1.5rem 1rem;
+  }
+  .contact-info-item {
+    padding: 0.7rem 0.75rem;
+  }
+  .contact-info-item:hover {
+    padding-left: 1rem;
+  }
+  .contact-info-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
+  .contact-info-value {
+    font-size: 0.82rem;
+  }
+  .input-field-modern {
+    padding: 1rem 0.85rem 0.4rem 2.4rem;
+    font-size: 0.85rem;
+  }
 }
 
 /* ===== Social Icons with Tooltips ===== */
